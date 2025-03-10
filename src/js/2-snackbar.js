@@ -14,3 +14,13 @@ function createPromise(delay, state){
         }, delay);
     });
 }
+
+form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+
+    const delay = parseInt(form.elements["delay"].value);
+    const state = form.elements["state"].value;
+
+    createPromise(delay, state)
+        .then(delay => {}).catch(delay => {});
+})
