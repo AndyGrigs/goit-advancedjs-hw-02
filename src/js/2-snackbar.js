@@ -22,5 +22,19 @@ form.addEventListener("submit", (e)=>{
     const state = form.elements["state"].value;
 
     createPromise(delay, state)
-        .then(delay => {}).catch(delay => {});
+        .then(delay => {
+            iziToast.success({
+                title: "✅ Success",
+                message: `Fulfilled promise in ${delay}ms`,
+                position: "topRight",
+            });
+        }).catch(delay => {
+            iziToast.error({
+                title: "❌ Error",
+                message: `Rejected promise in ${delay}ms`,
+                position: "topRight",
+            });
+        }).finally(() => {
+            form.reset();
+        });
 })
